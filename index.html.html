@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Angela Nestarez · Comunicadora audiovisual</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FBF3F7;--ink:#1F2E5A;--muted:#4F5C86;--glass:rgba(255,255,255,.62);--glassb:rgba(255,255,255,.85);--line:rgba(95,150,190,.35);--ac:#2B5CA8;--rose:#EF6B8A;--w1:#BFE6EE;--w2:#F6C3D6;--w3:#D7E6FA;--chip:rgba(191,230,238,.65);--ground:rgba(255,255,255,.9);color-scheme:light;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101733;--ink:#EEF1FF;--muted:#B5BFE3;--glass:rgba(34,46,92,.62);--glassb:rgba(44,58,112,.8);--line:rgba(140,170,230,.3);--ac:#9DB8FF;--rose:#FF8FAE;--w1:#1E4A63;--w2:#5B2D56;--w3:#223466;--chip:rgba(60,110,150,.5);--ground:rgba(150,180,255,.18);color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#101733;--ink:#EEF1FF;--muted:#B5BFE3;--glass:rgba(34,46,92,.62);--glassb:rgba(44,58,112,.8);--line:rgba(140,170,230,.3);--ac:#9DB8FF;--rose:#FF8FAE;--w1:#1E4A63;--w2:#5B2D56;--w3:#223466;--chip:rgba(60,110,150,.5);--ground:rgba(150,180,255,.18);color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;color:var(--ink);font:400 17px/1.6 "Nunito Sans",system-ui,sans-serif;background:radial-gradient(900px 650px at 8% -4%,var(--w1),transparent 62%),radial-gradient(850px 750px at 92% 22%,var(--w2),transparent 64%),radial-gradient(1000px 600px at 20% 78%,var(--w3),transparent 62%),var(--bg)}
+.wrap{max-width:980px;margin:0 auto;padding:44px 20px 70px}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;line-height:1.1;margin:0;font-weight:600}
+h1{font-size:clamp(2.6rem,8vw,4.6rem);letter-spacing:-.02em}
+.tag{font-size:1.2rem;color:var(--muted);max-width:54ch;margin:16px 0 20px}
+.contact{display:flex;flex-wrap:wrap;gap:8px}
+a{color:var(--ac)}
+.contact a{color:var(--ink);text-decoration:none;background:var(--glass);border:1px solid var(--glassb);padding:6px 16px;border-radius:99px 80px 99px 90px;font-weight:600;font-size:.95rem;backdrop-filter:blur(6px)}
+.contact a:hover{background:var(--glassb)}
+h2{font-size:1.8rem;margin:60px 0 6px}
+.sub{color:var(--muted);margin:0 0 18px}
+.stage{position:relative;border-radius:40px 60px 34px 52px;background:linear-gradient(170deg,var(--w1),var(--w2) 62%,var(--glassb));overflow:hidden;box-shadow:0 20px 50px -24px rgba(60,90,160,.45)}
+.scroller{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.track{position:relative;min-width:720px;height:270px}
+.arch{position:absolute;left:0;bottom:30px;width:150px;opacity:.5;pointer-events:none}
+.ground{position:absolute;left:-5%;right:-5%;bottom:-20px;height:110px;background:var(--ground);filter:blur(16px);border-radius:50%}
+.node{position:absolute;bottom:80px;transform:translateX(-50%);width:88px;text-align:center;background:none;border:0;color:var(--ink);font:700 .82rem/1.25 "Nunito Sans",sans-serif;cursor:pointer;padding:0}
+.node .ico{display:grid;place-items:center;width:58px;height:58px;margin:0 auto 6px;border-radius:52% 48% 55% 45%;background:var(--glass);border:1px solid var(--glassb);backdrop-filter:blur(6px);font-size:1.6rem;transition:transform .25s,background .25s;box-shadow:0 8px 20px -10px rgba(60,90,160,.5)}
+.ico i{font-style:normal;filter:grayscale(1) contrast(.7) opacity(.75)}
+.node:hover .ico{transform:translateY(-3px)}
+.node[aria-pressed="true"] .ico{background:var(--rose);transform:translateY(-6px)}
+.node[aria-pressed="true"] .ico i{filter:grayscale(1) brightness(5)}
+.node:focus-visible,.btn:focus-visible,a:focus-visible{outline:3px solid var(--ac);outline-offset:3px;border-radius:14px}
+.hero{position:absolute;bottom:64px;width:70px;height:120px;transform:translateX(-50%);transition-property:left;transition-timing-function:ease-in-out;pointer-events:none;z-index:2}
+.hero svg{width:100%;height:100%;overflow:visible}
+.hero .flip{transform-origin:35px 60px;transition:transform .25s}
+.hero.left .flip{transform:scaleX(-1)}
+.leg,.arm{transform-box:fill-box;transform-origin:50% 0}
+.walking .legL{animation:sw .45s ease-in-out infinite alternate}
+.walking .legR{animation:sw .45s ease-in-out infinite alternate-reverse}
+.walking .armL{animation:sw .45s ease-in-out infinite alternate-reverse}
+.walking .armR{animation:sw .45s ease-in-out infinite alternate}
+.walking .bob{animation:bob .22s ease-in-out infinite alternate}
+@keyframes sw{from{transform:rotate(-26deg)}to{transform:rotate(26deg)}}
+@keyframes bob{to{transform:translateY(-3px)}}
+.bubble{position:absolute;bottom:196px;transform:translateX(-50%);background:var(--glassb);border-radius:18px 22px 18px 8px;padding:5px 14px;font:700 .85rem "Nunito Sans",sans-serif;white-space:nowrap;transition-property:left;transition-timing-function:ease-in-out;z-index:3;pointer-events:none;box-shadow:0 8px 20px -10px rgba(60,90,160,.5)}
+.ctrl{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:18px 0}
+.btn{font:700 1rem "Nunito Sans",sans-serif;border:0;background:linear-gradient(120deg,var(--ac),var(--rose));color:#fff;padding:11px 24px;border-radius:99px 80px 99px 90px;cursor:pointer;box-shadow:0 10px 24px -12px rgba(43,92,168,.7)}
+.hint{color:var(--muted);font-size:.92rem}
+.card,.box,.book{background:var(--glass);border:1px solid var(--glassb);backdrop-filter:blur(8px);box-shadow:0 18px 44px -26px rgba(60,90,160,.5)}
+.card{border-radius:34px 46px 30px 40px;padding:28px 28px 24px;min-height:250px}
+.card.in{animation:in .4s ease}
+@keyframes in{from{opacity:0;transform:translateY(8px)}}
+.card h3{font-size:1.7rem}
+.where{color:var(--ac);font-weight:700;margin:6px 0 12px}
+.card ul{margin:0;padding-left:1.2em}
+.card li{margin:0 0 8px;max-width:72ch}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chip{background:var(--chip);border-radius:99px 80px 99px 90px;padding:4px 13px;font-weight:600;font-size:.88rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.box{border-radius:28px 36px 26px 32px;padding:22px}
+.box h3{font-size:1.2rem;margin-bottom:8px}
+.box p{margin:0 0 6px}
+.box small{color:var(--muted)}
+.book{border-radius:30px 40px 28px 36px;padding:24px;display:flex;flex-direction:column;gap:8px}
+.book h3{font-size:1.3rem}
+.book p{margin:0;color:var(--muted)}
+.book a{font-weight:700;margin-top:6px}
+.skills{display:grid;gap:12px}
+.skills div{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.skills b{min-width:150px}
+footer{margin-top:48px;color:var(--muted);font-size:.9rem}
+@media (max-width:560px){.skills b{min-width:100%}}
+@media (prefers-reduced-motion:reduce){.hero,.bubble{transition-duration:.01s!important}.walking *{animation:none!important}.card.in{animation:none}}
+</style>
+</head>
+<body>
+<main class="wrap">
+<header>
+<h1>Angela Nestarez</h1>
+<p class="tag">Comunicadora audiovisual en el Fondo Editorial PUCP. Convierto libros, autores y eventos en contenido que la gente quiere ver, y mido lo que funciona. Ahora me preparo para ser analista de datos.</p>
+<div class="contact">
+<a href="mailto:angela.nestarez@pucp.edu.pe">angela.nestarez@pucp.edu.pe</a>
+<a href="tel:+51914306313">914 306 313</a>
+<a href="#recorrido">Lima, Perú</a>
+</div>
+</header>
+
+<h2 id="recorrido">Acompáñame en un día de trabajo</h2>
+<p class="sub">Elige una escena o deja que Angela te lleve por todas.</p>
+
+<div class="stage"><div class="scroller"><div class="track" id="track" aria-label="Recorrido por las escenas de trabajo">
+<svg class="arch" viewBox="0 0 150 200" aria-hidden="true"><path d="M0 200V92L58 20 64 26V90C40 90 30 110 30 130V200Z" fill="#5BA7C9"/><path d="M64 26V200H0" fill="#8CC6D9" opacity=".6"/></svg><div class="ground"></div>
+<div class="bubble" id="bubble">Hola</div>
+<div class="hero" id="hero" aria-hidden="true">
+<svg viewBox="0 0 70 120"><defs><filter id="wc" x="-15%" y="-10%" width="130%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".05" numOctaves="2" seed="4" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.5"/></filter></defs><g filter="url(#wc)"><g class="flip"><g class="bob">
+<g class="leg legL"><rect x="26" y="66" width="10" height="38" rx="5" fill="#3C6FB0" opacity=".85"/><ellipse cx="32" cy="106" rx="9" ry="4.5" fill="#26357A" opacity=".85"/></g>
+<g class="leg legR"><rect x="35" y="66" width="10" height="38" rx="5" fill="#5BA7C9" opacity=".8"/><ellipse cx="42" cy="106" rx="9" ry="4.5" fill="#26357A" opacity=".85"/></g>
+<g class="arm armR"><rect x="45" y="44" width="9" height="28" rx="4.5" fill="#5BA7C9" opacity=".85"/><circle cx="50" cy="73" r="4.5" fill="#F3BBAA"/></g>
+<path d="M22 44 Q35 38 48 44 L50 70 Q35 76 20 70Z" fill="#4A86BE" opacity=".9"/>
+<ellipse cx="37" cy="62" rx="14" ry="9" fill="#EF8FAE" opacity=".45"/>
+<path d="M30 42 L35 56 L40 42Z" fill="#FFF1F6"/>
+<g class="arm armL"><rect x="16" y="44" width="9" height="28" rx="4.5" fill="#3C6FB0" opacity=".85"/><circle cx="20" cy="73" r="4.5" fill="#F3BBAA"/></g>
+<rect x="31" y="34" width="8" height="10" rx="3" fill="#F3BBAA"/>
+<g fill="#26357A" opacity=".92"><circle cx="35" cy="22" r="19"/><circle cx="19" cy="26" r="8"/><circle cx="51" cy="26" r="8"/><circle cx="16" cy="38" r="7"/><circle cx="54" cy="38" r="7"/><circle cx="22" cy="12" r="8"/><circle cx="48" cy="12" r="8"/><circle cx="35" cy="6" r="8"/></g>
+<g fill="#9A58B0" opacity=".4"><circle cx="46" cy="14" r="9"/><circle cx="53" cy="36" r="6"/><circle cx="30" cy="8" r="6"/></g>
+<ellipse cx="35" cy="26" rx="13.5" ry="15" fill="#F6C9B8"/>
+<path d="M21 20 Q30 8 49 17 Q40 14 32 20 Q26 18 21 20Z" fill="#26357A"/>
+<circle cx="30" cy="26" r="1.6" fill="#26357A"/><circle cx="40" cy="26" r="1.6" fill="#26357A"/>
+<path d="M30 32 Q35 36 40 32" stroke="#C9485F" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+<circle cx="26" cy="31" r="3" fill="#EF8FAE" opacity=".5"/><circle cx="44" cy="31" r="3" fill="#EF8FAE" opacity=".5"/>
+</g></g></g></svg></div>
+</div></div></div>
+
+<div class="ctrl">
+<button class="btn" id="tour" type="button">Hacer el recorrido completo</button>
+<span class="hint">También funcionan las flechas del teclado.</span>
+</div>
+
+<article class="card in" id="card" aria-live="polite"></article>
+
+<h2>Portadas que diseñé</h2>
+<p class="sub">Dos libros del Fondo Editorial PUCP, ambos de 2024. Cada título abre su página en la tienda.</p>
+<div class="grid">
+<div class="book"><h3>Martín Adán. Conversaciones con Francisco Alarco Larrabure</h3><p>Una bitácora del último año de vida del poeta, escrita por el psiquiatra Francisco Alarco Larrabure a partir de sus encuentros semanales. 208 páginas.</p><a href="https://www.fondoeditorial.pucp.edu.pe/categorias/1628-martin-adan-conversaciones-con-francisco-alarco-larrabure.html" target="_blank" rel="noopener">Ver el libro en la tienda</a></div>
+<div class="book"><h3>El futuro de la Tierra</h3><p>De Alfredo Dammert. Repasa los grandes desastres que afectaron al planeta y se pregunta qué futuro nos espera. 252 páginas.</p><a href="https://www.fondoeditorial.pucp.edu.pe/categorias/1643-el-futuro-de-la-tierra.html" target="_blank" rel="noopener">Ver el libro en la tienda</a></div>
+</div>
+<h2>Dónde estudio y qué uso</h2>
+<p class="sub">&nbsp;</p>
+<div class="grid">
+<div class="box"><h3>Educación</h3><p><b>Pontificia Universidad Católica del Perú</b></p><p>Comunicación Audiovisual, 10.º ciclo.</p><small>Egreso previsto en 2027.</small></div>
+<div class="box"><h3>Formación complementaria</h3><p><b>Bootcamp de Consultoría Deloitte 2026</b><br><small>30 de octubre de 2026. Caso de consultoría resuelto en equipo.</small></p><p><b>Data Analytics y Business Intelligence</b><br><small>En curso. Me preparo para ser analista de datos.</small></p></div>
+</div>
+<div class="box skills" style="margin-top:16px">
+<div><b>Diseño y audiovisual</b><span class="chip">Photoshop</span><span class="chip">Illustrator</span><span class="chip">Premiere Pro</span><span class="chip">After Effects</span><span class="chip">Canva</span><span class="chip">CapCut</span></div>
+<div><b>Análisis de datos</b><span class="chip">Power BI</span><span class="chip">SQL</span><span class="chip">Python</span><span class="chip">Excel</span></div>
+<div><b>Marketing digital</b><span class="chip">Meta Business Suite</span><span class="chip">Redes sociales</span><span class="chip">Copywriting</span></div>
+<div><b>IA generativa</b><span class="chip">ChatGPT</span><span class="chip">Claude</span><span class="chip">Copilot</span><span class="chip">Gemini</span><span class="chip">Perplexity</span></div>
+<div><b>Idiomas</b><span class="chip">Español nativo</span><span class="chip">Inglés intermedio</span></div>
+</div>
+<footer>Lima, Perú · angela.nestarez@pucp.edu.pe</footer>
+</main>
+<script>
+var S=[
+{i:"🗓️",n:"Reunión de equipo",b:"Reunión",t:"Reuniones de equipo",w:"Practicante de Comunicación · Fondo Editorial PUCP · 2023 – Presente",l:["Presento cada semestre los indicadores (KPI) de comunicación para que el equipo decida con datos.","Agilicé los procesos de comunicación del área para trabajar de forma más ordenada.","Mantuve al día el catálogo en la tienda virtual del Fondo Editorial."],c:["KPI","Procesos","Tienda virtual"]},
+{i:"✍️",n:"Redes y contenido",b:"Publicando",t:"Redes sociales y contenido",w:"Fondo Editorial PUCP · desde hace 3 años",l:["Produzco y publico el contenido de redes de la editorial: copywriting, piezas gráficas y audiovisual.","Doy visibilidad a publicaciones, autores, novedades y actividades culturales ante nuestra comunidad."],c:["Copywriting","Meta Business Suite","Audiovisual"]},
+{i:"🎨",n:"Mesa de diseño",b:"Diseñando",t:"Diseño gráfico y portadas",w:"Fondo Editorial PUCP",l:["Diseño las piezas de campañas editoriales, ferias y presentaciones con una identidad visual coherente.","Diseñé las portadas de dos libros ya publicados: <a href=\"https://www.fondoeditorial.pucp.edu.pe/categorias/1628-martin-adan-conversaciones-con-francisco-alarco-larrabure.html\" target=\"_blank\" rel=\"noopener\">“Martín Adán. Conversaciones con Francisco Alarco Larrabure”</a> y <a href=\"https://www.fondoeditorial.pucp.edu.pe/categorias/1643-el-futuro-de-la-tierra.html\" target=\"_blank\" rel=\"noopener\">“El futuro de la Tierra”</a>."],c:["Photoshop","Illustrator","Identidad visual"]},
+{i:"🎤",n:"Eventos",b:"En un evento",t:"Presentaciones y eventos",w:"Fondo Editorial PUCP",l:["Cubro cada evento en tres etapas: convocatoria previa, cobertura durante la actividad y difusión posterior.","Así el alcance de cada actividad llega más allá de quienes asisten.","Contribuyo a organizar presentaciones y ferias, con el material de difusión listo a tiempo."],c:["Convocatoria","Cobertura en vivo","Difusión"]},
+{i:"📚",n:"Feria del Libro",b:"En la feria",t:"Feria Internacional del Libro de Lima 2023",w:"Asistente de Ventas y Atención al Cliente · PRUNI S.A.C. · 2023",l:["Atendí a los visitantes y gestioné la venta y reposición de libros, con stock disponible en un evento de alta afluencia.","Creé material audiovisual para presentar las publicaciones a editoriales extranjeras."],c:["Ventas","Atención al cliente","Audiovisual"]},
+{i:"🎓",n:"Campus PUCP",b:"En el campus",t:"Eventos y atención en la PUCP",w:"Asistente DAES · Pontificia Universidad Católica del Perú · 2023",l:["Colaboré en la planificación y ejecución de eventos institucionales de DAES.","Gestioné la recepción del Servicio de Salud PUCP y organicé archivos y documentación."],c:["Eventos","Organización"]},
+{i:"📊",n:"Hacia Data Analytics",b:"Aprendiendo",t:"Mi siguiente paso: Data Analytics",w:"Cursos de Data Analytics y Business Intelligence · En curso",l:["Me preparo para ser analista de datos, uniendo mi experiencia en comunicación con el análisis de datos.","Aprendo análisis y visualización con Power BI, SQL, Python y Excel para decidir con datos."],c:["Power BI","SQL","Python","Excel"]}
+];
+var track=document.getElementById("track"),hero=document.getElementById("hero"),bub=document.getElementById("bubble"),card=document.getElementById("card"),nodes=[],cur=0,busy=false,stop=false;
+var rm=matchMedia("(prefers-reduced-motion:reduce)").matches;
+function pos(i){return 9+i*(82/(S.length-1))}
+S.forEach(function(s,i){var b=document.createElement("button");b.type="button";b.className="node";b.style.left=pos(i)+"%";b.setAttribute("aria-pressed","false");b.innerHTML='<span class="ico"><i>'+s.i+'</i></span>'+s.n;b.onclick=function(){stop=true;go(i)};track.appendChild(b);nodes.push(b)});
+function show(i){var s=S[i];card.className="card";void card.offsetWidth;card.className="card in";
+card.innerHTML="<h3>"+s.t+"</h3><p class=\"where\">"+s.w+"</p><ul>"+s.l.map(function(x){return"<li>"+x+"</li>"}).join("")+"</ul><div class=\"chips\">"+s.c.map(function(x){return"<span class=\"chip\">"+x+"</span>"}).join("")+"</div>";
+nodes.forEach(function(n,k){n.setAttribute("aria-pressed",k===i?"true":"false")});bub.textContent=s.b}
+function go(i){return new Promise(function(res){
+if(busy||i===cur&&card.innerHTML){return res()}
+busy=true;var d=rm?.01:Math.max(.8,Math.abs(i-cur)*.7);
+hero.classList.toggle("left",i<cur);
+[hero,bub].forEach(function(e){e.style.transitionDuration=d+"s"});
+bub.textContent="…";hero.classList.add("walking");
+hero.style.left=bub.style.left=pos(i)+"%";
+setTimeout(function(){hero.classList.remove("walking");cur=i;show(i);busy=false;res()},d*1000+30)})}
+function place(i){hero.style.transitionDuration=bub.style.transitionDuration="0s";hero.style.left=bub.style.left=pos(i)+"%";cur=i;show(i)}
+place(0);
+document.getElementById("tour").onclick=async function(){stop=false;for(var i=0;i<S.length&&!stop;i++){if(i!==cur||i===0&&!busy){await go(i);await new Promise(function(r){setTimeout(r,rm?50:1500)})}}};
+document.addEventListener("keydown",function(e){if(e.key==="ArrowRight"&&cur<S.length-1){stop=true;go(cur+1)}if(e.key==="ArrowLeft"&&cur>0){stop=true;go(cur-1)}});
+</script>
+</body>
+</html>
